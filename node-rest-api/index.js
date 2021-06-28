@@ -10,16 +10,25 @@ const authRoute = require("./routes/auth");
 dotenv.config();
 
 mongoose.connect(
-  "process.env.MONGO_URL",
+  process.env.MONGO_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("MongoDB Connected!!!");
   }
 );
 
-app.get("/", (req, res) => {
-  res.send("Home Page!");
-});
+// mongoose
+//   .connect(process.env.MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//   })
+//   .then(() => console.log("Database connected!"))
+//   .catch((err) => console.log(err));
+
+// app.get("/", (req, res) => {
+//   res.send("Home Page!");
+// });
 
 // Middleware
 app.use(express.json());
