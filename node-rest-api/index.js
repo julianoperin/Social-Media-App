@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
+const postRoute = require("./routes/posts");
 
 dotenv.config();
 
@@ -37,7 +38,10 @@ app.use(morgan("common"));
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/posts", postRoute);
 
-app.listen(8800, () => {
-  console.log("Backend server is running!");
+const PORT = 8800;
+
+app.listen(PORT, () => {
+  console.log(`Backend server is running on PORT ${PORT}!`);
 });
